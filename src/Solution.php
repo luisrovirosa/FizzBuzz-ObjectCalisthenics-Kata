@@ -3,13 +3,16 @@
 class Solution
 {
     /**
+     * Contains the answers of the solution.
+     *
      * @var Answer[]
      */
     private $answers;
 
     /**
      * Solution constructor.
-     * @param Answer[] $answers
+     *
+     * @param Answer[] $answers The answers of the solution.
      */
     public function __construct($answers)
     {
@@ -17,7 +20,9 @@ class Solution
     }
 
     /**
-     * @param int $number
+     * Get the answer of the number.
+     *
+     * @param int $number The number
      * @return Answer
      */
     public function answer($number)
