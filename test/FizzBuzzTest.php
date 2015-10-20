@@ -9,6 +9,7 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $numbers = $fizzBuzz->execute();
 
-        $this->assertEquals('1', $numbers[0]);
+        $response = new Answer('1');
+        $this->assertEquals($response, $numbers[0]);
     }
 }
