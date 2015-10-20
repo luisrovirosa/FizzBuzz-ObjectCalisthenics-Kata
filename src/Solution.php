@@ -22,11 +22,11 @@ class Solution
     /**
      * Get the answer of the number.
      *
-     * @param int $number The number
+     * @param FizzNumber $number The number
      * @return Answer
      */
-    public function answer($number)
+    public function answer(FizzNumber $number)
     {
-        return $this->answers[$number - 1];
+        return $this->answers[$number->toInt() - 1];
     }
 }
