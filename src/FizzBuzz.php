@@ -13,10 +13,10 @@ class FizzBuzz
     /**
      * Retrieve the first 100 values of FizzBuzz.
      *
-     * @return array
+     * @return Solution
      */
     public function execute()
     {
-        return array(new Answer('1'));
+        return new Solution([new Answer('1')]);
     }
 }
