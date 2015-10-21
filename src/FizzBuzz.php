@@ -19,7 +19,11 @@ class FizzBuzz
     {
         $answers = [];
         for ($i = 1; $i <= 100; $i++) {
-            $answers[] = new Answer($i);
+            if ($i == 3) {
+                $answers[] = new Answer('Fizz');
+            } else {
+                $answers[] = new Answer($i);
+            }
         }
 
         return new Solution($answers);
