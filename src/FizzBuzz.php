@@ -10,7 +10,7 @@ class FizzBuzz
      */
     public function __construct()
     {
-        $this->rules = [new FizzNumberRule(), new SameNumberRule()];
+        $this->rules = [new FizzNumberRule(), new BuzzNumberRule(), new SameNumberRule()];
     }
 
     /**

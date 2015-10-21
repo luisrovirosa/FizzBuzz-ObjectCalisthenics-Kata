@@ -28,6 +28,12 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
     }
 
     /** @test */
+    public function should_return_Buzz_for_the_number_5()
+    {
+        $this->assertExpectedAnswer('Buzz', 5);
+    }
+
+    /** @test */
     public function should_contains_100_values()
     {
         $this->assertEquals(new FizzNumber(100), $this->solution()->count());
