@@ -8,7 +8,7 @@ class FizzBoolean
     private $value;
 
     /** @var FizzBoolean[] */
-    static $values = null;
+    private static $values = null;
 
     /**
      * FizzBoolean constructor.
