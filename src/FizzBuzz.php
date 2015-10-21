@@ -31,10 +31,19 @@ class FizzBuzz
      */
     protected function generateAnswer($i)
     {
-        if ($i == 3) {
+        if ($this->isFizz($i)) {
             return new Answer('Fizz');
         } else {
             return new Answer($i);
         }
+    }
+
+    /**
+     * @param $i
+     * @return bool
+     */
+    protected function isFizz($i)
+    {
+        return $i == 3;
     }
 }
