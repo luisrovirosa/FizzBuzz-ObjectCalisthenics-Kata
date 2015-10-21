@@ -2,6 +2,20 @@
 
 class BuzzNumberRule implements Rule
 {
+    /** @var FizzNumber */
+    private $five;
+    
+    /** @var Answer */
+    private $buzz;
+
+    /**
+     * BuzzNumberRule constructor.
+     */
+    public function __construct()
+    {
+        $this->five = new FizzNumber(5);
+        $this->buzz = new Answer('Buzz');
+    }
 
     /**
      * @param FizzNumber $number
@@ -9,7 +23,7 @@ class BuzzNumberRule implements Rule
      */
     public function match(FizzNumber $number)
     {
-        return $number->modOf(new FizzNumber(5));
+        return $number->modOf($this->five);
     }
 
     /**
@@ -18,6 +32,6 @@ class BuzzNumberRule implements Rule
      */
     public function answer(FizzNumber $number)
     {
-        return new Answer('Buzz');
+        return $this->buzz;
     }
 }
