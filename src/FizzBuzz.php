@@ -2,12 +2,15 @@
 
 class FizzBuzz
 {
+    /** @var Rule[] */
+    private $rules;
 
     /**
      * FizzBuzz constructor.
      */
     public function __construct()
     {
+        $this->rules = [new FizzNumberRule(), new SameNumberRule()];
     }
 
     /**
@@ -31,19 +34,21 @@ class FizzBuzz
      */
     protected function generateAnswer($i)
     {
-        if ($this->isFizz($i)) {
-            return new Answer('Fizz');
-        } else {
-            return new Answer($i);
-        }
+        $fizzNumber = new FizzNumber($i);
+        $rule = $this->selectRule($fizzNumber);
+
+        return $rule->answer($fizzNumber);
     }
 
-    /**
-     * @param $i
-     * @return bool
-     */
-    protected function isFizz($i)
+    private function selectRule(FizzNumber $fizzNumber)
     {
-        return $i == 3;
+        $validRules = array_filter(
+            $this->rules,
+            function (Rule $rule) use ($fizzNumber) {
+                return $rule->match($fizzNumber) == new FizzBoolean(true);
+            }
+        );
+
+        return array_shift($validRules);
     }
 }
