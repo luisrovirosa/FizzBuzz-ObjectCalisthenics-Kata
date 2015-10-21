@@ -68,8 +68,30 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
      */
     protected function solution()
     {
-        $fizzBuzz = new FizzBuzz();
+        $fizzBuzz = new FizzBuzz($this->createRules());
 
         return $fizzBuzz->execute();
+    }
+
+    /**
+     * @return Rules
+     */
+    protected function createRules()
+    {
+        // This should be managed by the Dependency Injector
+        $fizzRule = new FizzNumberRule();
+        $buzzRule = new BuzzNumberRule();
+
+        return $rules = new Rules(
+            [
+                new FizzBuzzNumberRule(
+                    $fizzRule,
+                    $buzzRule
+                ),
+                $fizzRule,
+                $buzzRule,
+                new SameNumberRule()
+            ]
+        );
     }
 }

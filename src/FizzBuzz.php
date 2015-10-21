@@ -2,24 +2,16 @@
 
 class FizzBuzz
 {
-    /** @var Rule[] */
+    /** @var Rules */
     private $rules;
 
     /**
      * FizzBuzz constructor.
+     * @param Rules $rules
      */
-    public function __construct()
+    public function __construct(Rules $rules)
     {
-
-        $this->rules = [
-            new FizzBuzzNumberRule(
-                new FizzNumberRule(),
-                new BuzzNumberRule()
-            ),
-            new FizzNumberRule(),
-            new BuzzNumberRule(),
-            new SameNumberRule()
-        ];
+        $this->rules = $rules;
     }
 
     /**
@@ -31,42 +23,21 @@ class FizzBuzz
     {
         $answers = [];
         for ($i = 1; $i <= 100; $i++) {
-            $answers[] = $this->generateAnswer($i);
+            $answers[] = $this->generateAnswer(new FizzNumber($i));
         }
 
         return new Solution($answers);
     }
 
     /**
-     * @param $i
+     * @param FizzNumber $fizzNumber
      * @return Answer
      */
-    protected function generateAnswer($i)
+    private function generateAnswer(FizzNumber $fizzNumber)
     {
-        $fizzNumber = new FizzNumber($i);
-        $rule = $this->selectRule($fizzNumber);
+        $rule = $this->rules->selectRule($fizzNumber);
 
         return $rule->answer($fizzNumber);
     }
 
-    private function selectRule(FizzNumber $fizzNumber)
-    {
-        $validRules = $this->validRules($fizzNumber);
-
-        return array_shift($validRules);
-    }
-
-    /**
-     * @param FizzNumber $fizzNumber
-     * @return array
-     */
-    public function validRules(FizzNumber $fizzNumber)
-    {
-        return array_filter(
-            $this->rules,
-            function (Rule $rule) use ($fizzNumber) {
-                return $rule->match($fizzNumber) === FizzBoolean::true();
-            }
-        );
-    }
 }
