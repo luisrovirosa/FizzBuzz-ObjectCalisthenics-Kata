@@ -10,7 +10,16 @@ class FizzBuzz
      */
     public function __construct()
     {
-        $this->rules = [new FizzNumberRule(), new BuzzNumberRule(), new SameNumberRule()];
+
+        $this->rules = [
+            new FizzBuzzNumberRule(
+                new FizzNumberRule(),
+                new BuzzNumberRule()
+            ),
+            new FizzNumberRule(),
+            new BuzzNumberRule(),
+            new SameNumberRule()
+        ];
     }
 
     /**
@@ -42,13 +51,22 @@ class FizzBuzz
 
     private function selectRule(FizzNumber $fizzNumber)
     {
-        $validRules = array_filter(
+        $validRules = $this->validRules($fizzNumber);
+
+        return array_shift($validRules);
+    }
+
+    /**
+     * @param FizzNumber $fizzNumber
+     * @return array
+     */
+    public function validRules(FizzNumber $fizzNumber)
+    {
+        return array_filter(
             $this->rules,
             function (Rule $rule) use ($fizzNumber) {
                 return $rule->match($fizzNumber) === FizzBoolean::true();
             }
         );
-
-        return array_shift($validRules);
     }
 }

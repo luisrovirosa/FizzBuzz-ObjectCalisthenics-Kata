@@ -46,6 +46,15 @@ class FizzBoolean
         return self::$values[$boolean];
     }
 
+    /**
+     * @param FizzBoolean $boolean
+     * @return FizzBoolean
+     */
+    public function logicalAnd(FizzBoolean $boolean)
+    {
+        return static::fromBool($this->value && $boolean->value);
+    }
+
     protected static function initialize()
     {
         if (null == self::$values) {
@@ -55,4 +64,5 @@ class FizzBoolean
             ];
         }
     }
+
 }
