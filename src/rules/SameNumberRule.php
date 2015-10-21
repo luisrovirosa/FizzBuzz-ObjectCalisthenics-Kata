@@ -8,7 +8,7 @@ class SameNumberRule implements Rule
      */
     public function match(FizzNumber $number)
     {
-        return new FizzBoolean(true);
+        return FizzBoolean::true();
     }
 
     /**

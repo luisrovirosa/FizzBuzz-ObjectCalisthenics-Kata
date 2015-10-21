@@ -45,7 +45,7 @@ class FizzBuzz
         $validRules = array_filter(
             $this->rules,
             function (Rule $rule) use ($fizzNumber) {
-                return $rule->match($fizzNumber) == new FizzBoolean(true);
+                return $rule->match($fizzNumber) === FizzBoolean::true();
             }
         );
 

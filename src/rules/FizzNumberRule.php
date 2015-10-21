@@ -11,7 +11,7 @@ class FizzNumberRule implements Rule
     {
         $match = $number == new FizzNumber(3);
 
-        return new FizzBoolean($match);
+        return FizzBoolean::fromBool($match);
     }
 
     /**
