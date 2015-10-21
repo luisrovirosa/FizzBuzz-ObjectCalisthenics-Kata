@@ -9,6 +9,12 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
         $this->assertExpectedAnswer('1', 1);
     }
 
+    /** @test */
+    public function should_return_2_for_the_number_2()
+    {
+        $this->assertExpectedAnswer('2', 2);
+    }
+
     /**
      * @param $expected
      * @param $number

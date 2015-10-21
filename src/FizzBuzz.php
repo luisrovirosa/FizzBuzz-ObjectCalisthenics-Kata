@@ -17,6 +17,6 @@ class FizzBuzz
      */
     public function execute()
     {
-        return new Solution([new Answer('1')]);
+        return new Solution([new Answer('1'), new Answer('2')]);
     }
 }
