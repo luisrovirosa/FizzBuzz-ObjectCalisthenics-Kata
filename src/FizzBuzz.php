@@ -19,13 +19,22 @@ class FizzBuzz
     {
         $answers = [];
         for ($i = 1; $i <= 100; $i++) {
-            if ($i == 3) {
-                $answers[] = new Answer('Fizz');
-            } else {
-                $answers[] = new Answer($i);
-            }
+            $answers[] = $this->generateAnswer($i);
         }
 
         return new Solution($answers);
+    }
+
+    /**
+     * @param $i
+     * @return Answer
+     */
+    protected function generateAnswer($i)
+    {
+        if ($i == 3) {
+            return new Answer('Fizz');
+        } else {
+            return new Answer($i);
+        }
     }
 }
