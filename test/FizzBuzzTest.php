@@ -15,6 +15,12 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
         $this->assertExpectedAnswer('2', 2);
     }
 
+    /** @test */
+    public function should_contains_100_values()
+    {
+        $this->assertEquals(new FizzNumber(100), $this->solution()->count());
+    }
+
     /**
      * @param $expected
      * @param $number
@@ -30,9 +36,16 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
      */
     protected function answerOf($number)
     {
-        $fizzBuzz = new FizzBuzz();
-        $solution = $fizzBuzz->execute();
+        return $this->solution()->answer(new FizzNumber($number));
+    }
 
-        return $solution->answer(new FizzNumber($number));
+    /**
+     * @return \Solution
+     */
+    protected function solution()
+    {
+        $fizzBuzz = new FizzBuzz();
+
+        return $fizzBuzz->execute();
     }
 }

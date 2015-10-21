@@ -29,4 +29,12 @@ class Solution
     {
         return $this->answers[$number->toInt() - 1];
     }
+
+    /**
+     * @return FizzNumber
+     */
+    public function count()
+    {
+        return new FizzNumber(count($this->answers));
+    }
 }

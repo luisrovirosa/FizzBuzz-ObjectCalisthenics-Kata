@@ -17,6 +17,11 @@ class FizzBuzz
      */
     public function execute()
     {
-        return new Solution([new Answer('1'), new Answer('2')]);
+        $answers = [new Answer('1'), new Answer('2')];
+        for ($i = 3; $i <= 100; $i++) {
+            $answers[] = new Answer(null);
+        }
+
+        return new Solution($answers);
     }
 }
