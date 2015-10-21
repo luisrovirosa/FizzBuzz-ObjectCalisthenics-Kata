@@ -9,9 +9,7 @@ class FizzNumberRule implements Rule
      */
     public function match(FizzNumber $number)
     {
-        $match = $number->toInt() % 3 == 0;
-
-        return FizzBoolean::fromBool($match);
+        return $number->modOf(new FizzNumber(3));
     }
 
     /**

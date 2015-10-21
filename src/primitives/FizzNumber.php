@@ -16,9 +16,23 @@ class FizzNumber
         $this->value = $value;
     }
 
-    public function toInt(){
+    /**
+     * @return int
+     */
+    public function toInt()
+    {
         return $this->value;
     }
 
+    /**
+     * @param FizzNumber $number
+     * @return FizzBoolean
+     */
+    public function modOf(FizzNumber $number)
+    {
+        $isMod = $this->value % $number->value == 0;
+
+        return FizzBoolean::fromBool($isMod);
+    }
 
 }
